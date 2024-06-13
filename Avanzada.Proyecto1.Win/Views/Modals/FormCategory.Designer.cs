@@ -109,7 +109,7 @@
             btnAccept.Name = "btnAccept";
             btnAccept.Size = new Size(111, 26);
             btnAccept.TabIndex = 6;
-            btnAccept.Text = "Aceptar";
+            btnAccept.Text = "Accept";
             btnAccept.UseVisualStyleBackColor = true;
             btnAccept.Click += btnAccept_Click;
             // 
@@ -120,7 +120,7 @@
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(111, 26);
             btnCancel.TabIndex = 7;
-            btnCancel.Text = "Cancelar";
+            btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += btnCancel_Click;
             // 

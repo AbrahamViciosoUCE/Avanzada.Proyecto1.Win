@@ -40,9 +40,11 @@ namespace Avanzada.Proyecto1.Win
             collectionServices.AddScoped<FormProduct>();
             collectionServices.AddScoped<FormCategory>();
             collectionServices.AddScoped<FormSupplier>();
+
             collectionServices.AddScoped<ProductListControl>();
             collectionServices.AddScoped<CategoriesListControl>();
             collectionServices.AddScoped<SuppliersListControl>();
+
             collectionServices.AddScoped<MainForm>();
             
             collectionServices.AddSingleton<IProductDataProvider, ProductDataProvider>(); 
@@ -84,8 +86,6 @@ namespace Avanzada.Proyecto1.Win
             {
                 Log.Error("Error domain",e.ExceptionObject);
                 MessageBox.Show(e.ExceptionObject.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-
             }
         }
 

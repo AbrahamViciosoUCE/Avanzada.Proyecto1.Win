@@ -88,7 +88,7 @@
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(177, 31);
             btnEdit.TabIndex = 1;
-            btnEdit.Text = "Editar Categorias";
+            btnEdit.Text = "Edit Category";
             btnEdit.UseVisualStyleBackColor = true;
             btnEdit.Click += btnEdit_Click;
             // 
@@ -99,7 +99,7 @@
             btncreate.Name = "btncreate";
             btncreate.Size = new Size(177, 31);
             btncreate.TabIndex = 2;
-            btncreate.Text = "Crear Categoria";
+            btncreate.Text = "Create Category";
             btncreate.UseVisualStyleBackColor = true;
             btncreate.Click += btncreate_Click;
             // 
@@ -110,7 +110,7 @@
             btndelete.Name = "btndelete";
             btndelete.Size = new Size(177, 31);
             btndelete.TabIndex = 3;
-            btndelete.Text = "Borrar Categoria";
+            btndelete.Text = "Delete Category";
             btndelete.UseVisualStyleBackColor = true;
             btndelete.Click += btndelete_Click;
             // 

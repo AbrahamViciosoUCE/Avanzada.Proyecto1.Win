@@ -223,7 +223,7 @@
             SubmitBtn.Name = "SubmitBtn";
             SubmitBtn.Size = new Size(104, 28);
             SubmitBtn.TabIndex = 23;
-            SubmitBtn.Text = "Aceptar";
+            SubmitBtn.Text = "Accept";
             SubmitBtn.UseVisualStyleBackColor = true;
             SubmitBtn.Click += SubmitBtn_Click;
             // 
@@ -234,7 +234,7 @@
             button2.Name = "button2";
             button2.Size = new Size(104, 28);
             button2.TabIndex = 24;
-            button2.Text = "Cancelar";
+            button2.Text = "Cancel";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
