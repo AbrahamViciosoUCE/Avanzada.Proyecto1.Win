@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Avanzada.Proyecto1.Win.Validators
 {
-    public class IProductValidator: AbstractValidator<Product>
+    public class ProductValidator: AbstractValidator<Product>
     {
-        public IProductValidator()
+        public ProductValidator()
         {
             RuleFor(x => x.ProductName).NotEmpty();
             RuleFor(x => x.SupplierID).NotEmpty();
