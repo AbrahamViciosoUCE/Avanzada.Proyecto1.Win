@@ -13,18 +13,21 @@ namespace Avanzada.Proyecto1.Win
         public ProductListControl _productListControl;
         public CategoriesListControl _categoriesListControl;
         public SuppliersListControl _suppliersListControl;
+        public FacturationControl _facturationControl;
 
         public MainForm(
             IConfiguration configuration,
             ProductListControl productListControl,
             CategoriesListControl categoriesListControl,
-            SuppliersListControl suppliersListControl
+            SuppliersListControl suppliersListControl,
+            FacturationControl facturationControl
             )
         {
             _configuration = configuration;
             _productListControl = productListControl;
             _categoriesListControl = categoriesListControl;
             _suppliersListControl = suppliersListControl;
+            _facturationControl = facturationControl;
             InitializeComponent();
         }
 
@@ -47,6 +50,15 @@ namespace Avanzada.Proyecto1.Win
             MainPanel.Controls.Clear();
             _suppliersListControl.Dock = DockStyle.Fill;
             MainPanel.Controls.Add(_suppliersListControl);
+        }
+
+        private void facturationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MainPanel.Controls.Clear();
+            _facturationControl.Dock = DockStyle.Fill;
+            MainPanel.Controls.Add(_facturationControl);
+            this.WindowState = FormWindowState.Maximized;
+            this.MinimumSize = this.Size;
         }
     }
 }

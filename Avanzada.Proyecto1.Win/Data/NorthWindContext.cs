@@ -24,7 +24,7 @@ public partial class NorthWindContext : DbContext
 
     public virtual DbSet<CurrentProductList> CurrentProductLists { get; set; }
 
-    public virtual DbSet<Customer> Customers { get; set; }
+    public virtual DbSet<DataModel.Customer> Customers { get; set; }
 
     public virtual DbSet<CustomerAndSuppliersByCity> CustomerAndSuppliersByCities { get; set; }
 
@@ -54,7 +54,7 @@ public partial class NorthWindContext : DbContext
 
     public virtual DbSet<QuarterlyOrder> QuarterlyOrders { get; set; }
 
-    public virtual DbSet<Region> Regions { get; set; }
+    public virtual DbSet<DataModel.Region> Regions { get; set; }
 
     public virtual DbSet<SalesByCategory> SalesByCategories { get; set; }
 
@@ -123,7 +123,7 @@ public partial class NorthWindContext : DbContext
             entity.Property(e => e.ProductName).HasMaxLength(40);
         });
 
-        modelBuilder.Entity<Customer>(entity =>
+        modelBuilder.Entity<DataModel.Customer>(entity =>
         {
             entity.HasIndex(e => e.City, "City");
 
@@ -155,7 +155,7 @@ public partial class NorthWindContext : DbContext
                         .HasForeignKey("CustomerTypeId")
                         .OnDelete(DeleteBehavior.ClientSetNull)
                         .HasConstraintName("FK_CustomerCustomerDemo"),
-                    l => l.HasOne<Customer>().WithMany()
+                    l => l.HasOne<DataModel.Customer>().WithMany()
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.ClientSetNull)
                         .HasConstraintName("FK_CustomerCustomerDemo_Customers"),
@@ -497,7 +497,7 @@ public partial class NorthWindContext : DbContext
                 .HasColumnName("CustomerID");
         });
 
-        modelBuilder.Entity<Region>(entity =>
+        modelBuilder.Entity<DataModel.Region>(entity =>
         {
             entity.HasKey(e => e.RegionId).IsClustered(false);
 

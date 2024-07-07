@@ -31,14 +31,15 @@
             menuStrip1 = new MenuStrip();
             productosToolStripMenuItem = new ToolStripMenuItem();
             categoriasToolStripMenuItem = new ToolStripMenuItem();
-            MainPanel = new Panel();
             suppliersToolStripMenuItem = new ToolStripMenuItem();
+            MainPanel = new Panel();
+            facturationToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { productosToolStripMenuItem, categoriasToolStripMenuItem, suppliersToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { productosToolStripMenuItem, categoriasToolStripMenuItem, suppliersToolStripMenuItem, facturationToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(895, 24);
@@ -59,6 +60,13 @@
             categoriasToolStripMenuItem.Text = "Categories";
             categoriasToolStripMenuItem.Click += categoriasToolStripMenuItem_Click;
             // 
+            // suppliersToolStripMenuItem
+            // 
+            suppliersToolStripMenuItem.Name = "suppliersToolStripMenuItem";
+            suppliersToolStripMenuItem.Size = new Size(67, 20);
+            suppliersToolStripMenuItem.Text = "Suppliers";
+            suppliersToolStripMenuItem.Click += suppliersToolStripMenuItem_Click;
+            // 
             // MainPanel
             // 
             MainPanel.Dock = DockStyle.Fill;
@@ -67,12 +75,12 @@
             MainPanel.Size = new Size(895, 491);
             MainPanel.TabIndex = 1;
             // 
-            // suppliersToolStripMenuItem
+            // facturationToolStripMenuItem
             // 
-            suppliersToolStripMenuItem.Name = "suppliersToolStripMenuItem";
-            suppliersToolStripMenuItem.Size = new Size(67, 20);
-            suppliersToolStripMenuItem.Text = "Suppliers";
-            suppliersToolStripMenuItem.Click += suppliersToolStripMenuItem_Click;
+            facturationToolStripMenuItem.Name = "facturationToolStripMenuItem";
+            facturationToolStripMenuItem.Size = new Size(79, 20);
+            facturationToolStripMenuItem.Text = "Facturation";
+            facturationToolStripMenuItem.Click += facturationToolStripMenuItem_Click;
             // 
             // MainForm
             // 
@@ -98,5 +106,6 @@
         private Panel MainPanel;
         private ToolStripMenuItem categoriasToolStripMenuItem;
         private ToolStripMenuItem suppliersToolStripMenuItem;
+        private ToolStripMenuItem facturationToolStripMenuItem;
     }
 }
