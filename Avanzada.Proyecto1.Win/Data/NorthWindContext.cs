@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using Avanzada.Proyecto1.Win.DataModel;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace Avanzada.Proyecto1.Win.Data;
 
 public partial class NorthWindContext : DbContext
 {
-    public NorthWindContext()
+    private IConfiguration _configuration;
+    public NorthWindContext(IConfiguration configuration)
     {
+        _configuration = configuration;
     }
 
     public NorthWindContext(DbContextOptions<NorthWindContext> options)
@@ -71,8 +74,7 @@ public partial class NorthWindContext : DbContext
     public virtual DbSet<Territory> Territories { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=NorthWind;Integrated Security=True;Trust Server Certificate=True");
+        => optionsBuilder.UseSqlServer(_configuration.GetSection("ConnectionStrings:Database").Value);
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

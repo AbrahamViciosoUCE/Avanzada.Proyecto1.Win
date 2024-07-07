@@ -1,3 +1,4 @@
+using Avanzada.Proyecto1.Win.Data;
 using Avanzada.Proyecto1.Win.Data.Categories;
 using Avanzada.Proyecto1.Win.Data.Customer;
 using Avanzada.Proyecto1.Win.Data.Products;
@@ -53,6 +54,7 @@ namespace Avanzada.Proyecto1.Win
             collectionServices.AddSingleton<ICategoryDataProvider, CategoryDataProvider>();
             collectionServices.AddSingleton<ISupplierDataProvider, SupplierDataProvider>();
             collectionServices.AddSingleton<ICustomerDataProvider, CustomerDataProvider>();
+            collectionServices.AddSingleton<NorthWindContext>();
 
             collectionServices.AddValidatorsFromAssemblyContaining<MainForm>(); 
 

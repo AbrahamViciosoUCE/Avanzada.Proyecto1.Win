@@ -8,12 +8,13 @@ namespace Avanzada.Proyecto1.Win.Data.Customer
 {
     public class CustomerDataProvider: ICustomerDataProvider
     {
+        NorthWindContext _NorthWindContext;
+        public CustomerDataProvider(NorthWindContext northWindContext) { 
+            _NorthWindContext = northWindContext;
+        }
         IEnumerable<DataModel.Customer> ICustomerDataProvider.GetCustomers()
         {
-            using (NorthWindContext db = new NorthWindContext())
-            {
-                return db.Customers.ToList();
-            }
+           return _NorthWindContext.Customers.ToList();
         }
     }
 }
