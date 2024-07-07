@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Avanzada.Proyecto1.Win.Data.Customer;
+using Avanzada.Proyecto1.Win.DataModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,15 +14,20 @@ namespace Avanzada.Proyecto1.Win.Views.Controls
 {
     public partial class FacturationControl : UserControl
     {
-
-        public FacturationControl()
+        private ICustomerDataProvider _customerDataProvider;
+        public FacturationControl(
+                ICustomerDataProvider customerDataProvider
+            )
         {
+            _customerDataProvider = customerDataProvider;
             InitializeComponent();
         }
 
         private void FacturationControl_Load(object sender, EventArgs e)
         {
-
+            CustomercomboBox.DataSource = _customerDataProvider.GetCustomers();
+            CustomercomboBox.DisplayMember = nameof(Customer.CompanyName);
+            CustomercomboBox.ValueMember = nameof(Customer.CustomerId);
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

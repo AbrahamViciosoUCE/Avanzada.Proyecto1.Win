@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace Avanzada.Proyecto1.Win.Data.Customer
 {
-    internal class CustomerDataProvider: ICustomerDataProvider
+    public class CustomerDataProvider: ICustomerDataProvider
     {
+        IEnumerable<DataModel.Customer> ICustomerDataProvider.GetCustomers()
+        {
+            using (NorthWindContext db = new NorthWindContext())
+            {
+                return db.Customers.ToList();
+            }
+        }
     }
 }

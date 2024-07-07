@@ -8,5 +8,6 @@ namespace Avanzada.Proyecto1.Win.Data.Customer
 {
     public interface ICustomerDataProvider
     {
+        IEnumerable<DataModel.Customer> GetCustomers();
     }
 }
