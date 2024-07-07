@@ -44,6 +44,7 @@ namespace Avanzada.Proyecto1.Win
             collectionServices.AddScoped<ProductListControl>();
             collectionServices.AddScoped<CategoriesListControl>();
             collectionServices.AddScoped<SuppliersListControl>();
+            collectionServices.AddScoped<FacturationControl>();
 
             collectionServices.AddScoped<MainForm>();
             

@@ -57,7 +57,7 @@
             ProductsDataGrid.Location = new Point(3, 41);
             ProductsDataGrid.Name = "ProductsDataGrid";
             ProductsDataGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            ProductsDataGrid.Size = new Size(879, 585);
+            ProductsDataGrid.Size = new Size(1414, 585);
             ProductsDataGrid.TabIndex = 0;
             // 
             // ProductID
@@ -143,7 +143,7 @@
             // EditButton
             // 
             EditButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            EditButton.Location = new Point(528, 3);
+            EditButton.Location = new Point(1063, 3);
             EditButton.Name = "EditButton";
             EditButton.Size = new Size(174, 32);
             EditButton.TabIndex = 1;
@@ -154,7 +154,7 @@
             // CreateButton
             // 
             CreateButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            CreateButton.Location = new Point(348, 3);
+            CreateButton.Location = new Point(883, 3);
             CreateButton.Name = "CreateButton";
             CreateButton.Size = new Size(174, 32);
             CreateButton.TabIndex = 2;
@@ -165,7 +165,7 @@
             // deleteButton
             // 
             deleteButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            deleteButton.Location = new Point(708, 3);
+            deleteButton.Location = new Point(1243, 3);
             deleteButton.Name = "deleteButton";
             deleteButton.Size = new Size(174, 32);
             deleteButton.TabIndex = 3;
@@ -182,7 +182,7 @@
             Controls.Add(EditButton);
             Controls.Add(ProductsDataGrid);
             Name = "ProductListControl";
-            Size = new Size(885, 629);
+            Size = new Size(1420, 629);
             Load += ProductListControl_Load;
             ((System.ComponentModel.ISupportInitialize)ProductsDataGrid).EndInit();
             ResumeLayout(false);
