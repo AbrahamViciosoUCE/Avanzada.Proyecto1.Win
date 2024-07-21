@@ -33,11 +33,11 @@ public partial class NorthWindContext : DbContext
 
     public virtual DbSet<CustomerDemographic> CustomerDemographics { get; set; }
 
-    public virtual DbSet<Employee> Employees { get; set; }
+    public virtual DbSet<DataModel.Employee> Employees { get; set; }
 
     public virtual DbSet<Invoice> Invoices { get; set; }
 
-    public virtual DbSet<Order> Orders { get; set; }
+    public virtual DbSet<DataModel.Order> Orders { get; set; }
 
     public virtual DbSet<OrderDetail> OrderDetails { get; set; }
 
@@ -201,7 +201,7 @@ public partial class NorthWindContext : DbContext
             entity.Property(e => e.CustomerDesc).HasColumnType("ntext");
         });
 
-        modelBuilder.Entity<Employee>(entity =>
+        modelBuilder.Entity<DataModel.Employee>(entity =>
         {
             entity.HasIndex(e => e.LastName, "LastName");
 
@@ -236,7 +236,7 @@ public partial class NorthWindContext : DbContext
                         .HasForeignKey("TerritoryId")
                         .OnDelete(DeleteBehavior.ClientSetNull)
                         .HasConstraintName("FK_EmployeeTerritories_Territories"),
-                    l => l.HasOne<Employee>().WithMany()
+                    l => l.HasOne<DataModel.Employee>().WithMany()
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.ClientSetNull)
                         .HasConstraintName("FK_EmployeeTerritories_Employees"),
@@ -286,7 +286,7 @@ public partial class NorthWindContext : DbContext
             entity.Property(e => e.UnitPrice).HasColumnType("money");
         });
 
-        modelBuilder.Entity<Order>(entity =>
+        modelBuilder.Entity<DataModel.Order>(entity =>
         {
             entity.HasIndex(e => e.CustomerId, "CustomerID");
 

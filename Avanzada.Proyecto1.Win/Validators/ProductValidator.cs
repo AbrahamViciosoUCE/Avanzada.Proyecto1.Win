@@ -14,8 +14,8 @@ namespace Avanzada.Proyecto1.Win.Validators
         public ProductValidator()
         {
             RuleFor(x => x.ProductName).NotEmpty();
-            RuleFor(x => x.SupplierID).NotEmpty();
-            RuleFor(x => x.CategoryID).NotEmpty();
+            RuleFor(x => x.SupplierId).NotEmpty();
+            RuleFor(x => x.CategoryId).NotEmpty();
             RuleFor(x => x.UnitPrice).NotEmpty();
             RuleFor(x => x.QuantityPerUnit).NotEmpty();
             RuleFor(x => x.UnitsOnOrder).NotEmpty();

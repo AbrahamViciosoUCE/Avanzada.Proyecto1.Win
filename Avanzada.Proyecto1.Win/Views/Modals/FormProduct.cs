@@ -73,7 +73,7 @@ namespace Avanzada.Proyecto1.Win.Views
                 }
                 else if (modalMode == ModalMode.Create)
                 {
-                    viewmodel.ProductID = _productDataProvider.CreateProduct(viewmodel).First();
+                    viewmodel.ProductId = _productDataProvider.CreateProduct(viewmodel).First();
                 }
                 this.DialogResult = DialogResult.OK;
                 this.Close();

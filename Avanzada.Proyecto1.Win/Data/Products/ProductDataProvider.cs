@@ -11,13 +11,15 @@ namespace Avanzada.Proyecto1.Win.Data.Products
     public class ProductDataProvider : IProductDataProvider
     {
         IConfiguration _configuration;
+        NorthWindContext _northWindContext;
 
-        public ProductDataProvider(IConfiguration configuration)
+        public ProductDataProvider(IConfiguration configuration, NorthWindContext northWindContext)
         {
             _configuration = configuration;
+            _northWindContext = northWindContext;
         }
 
-        public IEnumerable<Product> GetProducts()
+        public IEnumerable<Models.Product> GetProducts()
         {
             IEnumerable<Product> products = new List<Product>();
             string queryString = @"SELECT A.*, B.CompanyName SupplierName, 
@@ -101,9 +103,32 @@ namespace Avanzada.Proyecto1.Win.Data.Products
             {
                 return connection.Query<Product>(queryString, new Product()
                 {
-                    ProductID = id
+                    ProductId = id
                 });
             }
+        }
+
+        public IEnumerable<Models.Product> GetProductByIdFullyColumns(int id)
+        {
+            return _northWindContext.Products.Where(x => x.ProductId == id).Select(x => new Models.Product() { 
+                ProductId = x.ProductId,
+                ProductName = x.ProductName,
+                SupplierId = x.SupplierId,
+                SupplierName = x.Supplier.CompanyName,
+                CategoryId = x.CategoryId,
+                CategoryName = x.Category.CategoryName,
+                UnitPrice = x.UnitPrice,
+                QuantityPerUnit = x.QuantityPerUnit,
+                UnitsInStock = x.UnitsInStock,
+                UnitsOnOrder = x.UnitsOnOrder,
+                ReorderLevel = x.ReorderLevel,
+                Discontinued = x.Discontinued
+            }).ToList();
+        }
+
+        public IEnumerable<DataModel.Product> GetProductsWithEF()
+        {
+            return _northWindContext.Products.ToList();
         }
     }
 }
