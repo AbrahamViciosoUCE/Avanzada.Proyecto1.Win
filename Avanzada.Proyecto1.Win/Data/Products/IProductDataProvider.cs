@@ -14,5 +14,7 @@ namespace Avanzada.Proyecto1.Win.Data.Products
         IEnumerable<Product> DeleteProduct(int id);
         IEnumerable<int> CreateProduct(Product product);
         IEnumerable<Product> UpdateProduct(Product product);
+        IEnumerable<Models.Product> GetProductByIdFullyColumns(int id);
+        IEnumerable<DataModel.Product> GetProductsWithEF();
     }
 }

@@ -1,4 +1,9 @@
+using Avanzada.Proyecto1.Win.Data;
 using Avanzada.Proyecto1.Win.Data.Categories;
+using Avanzada.Proyecto1.Win.Data.Customer;
+using Avanzada.Proyecto1.Win.Data.Employee;
+using Avanzada.Proyecto1.Win.Data.Order;
+using Avanzada.Proyecto1.Win.Data.OrderDetails;
 using Avanzada.Proyecto1.Win.Data.Products;
 using Avanzada.Proyecto1.Win.Data.Suppliers;
 using Avanzada.Proyecto1.Win.Views;
@@ -40,10 +45,12 @@ namespace Avanzada.Proyecto1.Win
             collectionServices.AddScoped<FormProduct>();
             collectionServices.AddScoped<FormCategory>();
             collectionServices.AddScoped<FormSupplier>();
+            collectionServices.AddScoped<FormSelectOrder>();
 
             collectionServices.AddScoped<ProductListControl>();
             collectionServices.AddScoped<CategoriesListControl>();
             collectionServices.AddScoped<SuppliersListControl>();
+            collectionServices.AddScoped<FacturationControlCopy>();
             collectionServices.AddScoped<FacturationControl>();
 
             collectionServices.AddScoped<MainForm>();
@@ -51,6 +58,12 @@ namespace Avanzada.Proyecto1.Win
             collectionServices.AddSingleton<IProductDataProvider, ProductDataProvider>(); 
             collectionServices.AddSingleton<ICategoryDataProvider, CategoryDataProvider>();
             collectionServices.AddSingleton<ISupplierDataProvider, SupplierDataProvider>();
+            collectionServices.AddSingleton<ICustomerDataProvider, CustomerDataProvider>();
+            collectionServices.AddSingleton<IEmployeeDataProvider, EmployeeDataProvider>();
+            collectionServices.AddSingleton<IOrderDataProvider, OrderDataProvider>();
+            collectionServices.AddSingleton<IOrderDetailDataProvider, OrderDetailDataProvider>();
+
+            collectionServices.AddSingleton<NorthWindContext>();
 
             collectionServices.AddValidatorsFromAssemblyContaining<MainForm>(); 
 

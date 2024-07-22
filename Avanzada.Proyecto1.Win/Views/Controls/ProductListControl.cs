@@ -50,7 +50,7 @@ namespace Avanzada.Proyecto1.Win.Views.Controls
             if (this._formproduct.ShowDialog() == DialogResult.OK)
             {
                 productsBindingList.Add(
-                    _productDataProvider.GetProductByID(_formproduct.viewmodel.ProductID)
+                    _productDataProvider.GetProductByID(_formproduct.viewmodel.ProductId)
                     .First()
                 );
             }
@@ -63,7 +63,7 @@ namespace Avanzada.Proyecto1.Win.Views.Controls
                 MessageBoxIcon.Warning
                 ) == DialogResult.Yes)
             {
-                _productDataProvider.DeleteProduct((ProductsDataGrid.SelectedRows[0].DataBoundItem as Product).ProductID);
+                _productDataProvider.DeleteProduct((ProductsDataGrid.SelectedRows[0].DataBoundItem as Product).ProductId);
                 productsBindingList.Remove(ProductsDataGrid.SelectedRows[0].DataBoundItem as Product);
             }
         }

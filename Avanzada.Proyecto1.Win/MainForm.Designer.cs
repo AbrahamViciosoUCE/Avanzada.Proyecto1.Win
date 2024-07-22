@@ -28,17 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             menuStrip1 = new MenuStrip();
             productosToolStripMenuItem = new ToolStripMenuItem();
             categoriasToolStripMenuItem = new ToolStripMenuItem();
-            MainPanel = new Panel();
             suppliersToolStripMenuItem = new ToolStripMenuItem();
+            facturationToolStripMenuItem = new ToolStripMenuItem();
+            MainPanel = new Panel();
+            kryptonCustomPaletteBase1 = new Krypton.Toolkit.KryptonCustomPaletteBase(components);
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { productosToolStripMenuItem, categoriasToolStripMenuItem, suppliersToolStripMenuItem });
+            menuStrip1.Font = new Font("Segoe UI", 9F);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { productosToolStripMenuItem, categoriasToolStripMenuItem, suppliersToolStripMenuItem, facturationToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(895, 24);
@@ -59,6 +63,20 @@
             categoriasToolStripMenuItem.Text = "Categories";
             categoriasToolStripMenuItem.Click += categoriasToolStripMenuItem_Click;
             // 
+            // suppliersToolStripMenuItem
+            // 
+            suppliersToolStripMenuItem.Name = "suppliersToolStripMenuItem";
+            suppliersToolStripMenuItem.Size = new Size(67, 20);
+            suppliersToolStripMenuItem.Text = "Suppliers";
+            suppliersToolStripMenuItem.Click += suppliersToolStripMenuItem_Click;
+            // 
+            // facturationToolStripMenuItem
+            // 
+            facturationToolStripMenuItem.Name = "facturationToolStripMenuItem";
+            facturationToolStripMenuItem.Size = new Size(79, 20);
+            facturationToolStripMenuItem.Text = "Facturation";
+            facturationToolStripMenuItem.Click += facturationToolStripMenuItem_Click;
+            // 
             // MainPanel
             // 
             MainPanel.Dock = DockStyle.Fill;
@@ -67,12 +85,13 @@
             MainPanel.Size = new Size(895, 491);
             MainPanel.TabIndex = 1;
             // 
-            // suppliersToolStripMenuItem
+            // kryptonCustomPaletteBase1
             // 
-            suppliersToolStripMenuItem.Name = "suppliersToolStripMenuItem";
-            suppliersToolStripMenuItem.Size = new Size(67, 20);
-            suppliersToolStripMenuItem.Text = "Suppliers";
-            suppliersToolStripMenuItem.Click += suppliersToolStripMenuItem_Click;
+            kryptonCustomPaletteBase1.BaseFont = new Font("Segoe UI", 9F);
+            kryptonCustomPaletteBase1.BaseFontSize = 9F;
+            kryptonCustomPaletteBase1.BasePaletteType = Krypton.Toolkit.BasePaletteType.Custom;
+            kryptonCustomPaletteBase1.ThemeName = "";
+            kryptonCustomPaletteBase1.UseKryptonFileDialogs = true;
             // 
             // MainForm
             // 
@@ -98,5 +117,7 @@
         private Panel MainPanel;
         private ToolStripMenuItem categoriasToolStripMenuItem;
         private ToolStripMenuItem suppliersToolStripMenuItem;
+        private ToolStripMenuItem facturationToolStripMenuItem;
+        private Krypton.Toolkit.KryptonCustomPaletteBase kryptonCustomPaletteBase1;
     }
 }

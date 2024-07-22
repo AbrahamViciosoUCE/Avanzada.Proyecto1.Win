@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Avanzada.Proyecto1.Win.Validators
 {
-    public class ISupplierValidator: AbstractValidator<Supplier>
+    public class SupplierValidator: AbstractValidator<Supplier>
     {
-        public ISupplierValidator() {
+        public SupplierValidator() {
             RuleFor(x => x.CompanyName).NotEmpty();
             RuleFor(x => x.ContactName).NotEmpty();
             RuleFor(x => x.ContactTitle).NotEmpty();

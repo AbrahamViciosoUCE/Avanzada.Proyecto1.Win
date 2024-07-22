@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using Avanzada.Proyecto1.Win.DataModel;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace Avanzada.Proyecto1.Win.Data;
 
 public partial class NorthWindContext : DbContext
 {
-    public NorthWindContext()
+    private IConfiguration _configuration;
+    public NorthWindContext(IConfiguration configuration)
     {
+        _configuration = configuration;
     }
 
     public NorthWindContext(DbContextOptions<NorthWindContext> options)
@@ -24,17 +27,17 @@ public partial class NorthWindContext : DbContext
 
     public virtual DbSet<CurrentProductList> CurrentProductLists { get; set; }
 
-    public virtual DbSet<Customer> Customers { get; set; }
+    public virtual DbSet<DataModel.Customer> Customers { get; set; }
 
     public virtual DbSet<CustomerAndSuppliersByCity> CustomerAndSuppliersByCities { get; set; }
 
     public virtual DbSet<CustomerDemographic> CustomerDemographics { get; set; }
 
-    public virtual DbSet<Employee> Employees { get; set; }
+    public virtual DbSet<DataModel.Employee> Employees { get; set; }
 
     public virtual DbSet<Invoice> Invoices { get; set; }
 
-    public virtual DbSet<Order> Orders { get; set; }
+    public virtual DbSet<DataModel.Order> Orders { get; set; }
 
     public virtual DbSet<OrderDetail> OrderDetails { get; set; }
 
@@ -54,7 +57,7 @@ public partial class NorthWindContext : DbContext
 
     public virtual DbSet<QuarterlyOrder> QuarterlyOrders { get; set; }
 
-    public virtual DbSet<Region> Regions { get; set; }
+    public virtual DbSet<DataModel.Region> Regions { get; set; }
 
     public virtual DbSet<SalesByCategory> SalesByCategories { get; set; }
 
@@ -71,8 +74,7 @@ public partial class NorthWindContext : DbContext
     public virtual DbSet<Territory> Territories { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=NorthWind;Integrated Security=True;Trust Server Certificate=True");
+        => optionsBuilder.UseSqlServer(_configuration.GetSection("ConnectionStrings:Database").Value);
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -123,7 +125,7 @@ public partial class NorthWindContext : DbContext
             entity.Property(e => e.ProductName).HasMaxLength(40);
         });
 
-        modelBuilder.Entity<Customer>(entity =>
+        modelBuilder.Entity<DataModel.Customer>(entity =>
         {
             entity.HasIndex(e => e.City, "City");
 
@@ -155,7 +157,7 @@ public partial class NorthWindContext : DbContext
                         .HasForeignKey("CustomerTypeId")
                         .OnDelete(DeleteBehavior.ClientSetNull)
                         .HasConstraintName("FK_CustomerCustomerDemo"),
-                    l => l.HasOne<Customer>().WithMany()
+                    l => l.HasOne<DataModel.Customer>().WithMany()
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.ClientSetNull)
                         .HasConstraintName("FK_CustomerCustomerDemo_Customers"),
@@ -199,7 +201,7 @@ public partial class NorthWindContext : DbContext
             entity.Property(e => e.CustomerDesc).HasColumnType("ntext");
         });
 
-        modelBuilder.Entity<Employee>(entity =>
+        modelBuilder.Entity<DataModel.Employee>(entity =>
         {
             entity.HasIndex(e => e.LastName, "LastName");
 
@@ -234,7 +236,7 @@ public partial class NorthWindContext : DbContext
                         .HasForeignKey("TerritoryId")
                         .OnDelete(DeleteBehavior.ClientSetNull)
                         .HasConstraintName("FK_EmployeeTerritories_Territories"),
-                    l => l.HasOne<Employee>().WithMany()
+                    l => l.HasOne<DataModel.Employee>().WithMany()
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.ClientSetNull)
                         .HasConstraintName("FK_EmployeeTerritories_Employees"),
@@ -284,7 +286,7 @@ public partial class NorthWindContext : DbContext
             entity.Property(e => e.UnitPrice).HasColumnType("money");
         });
 
-        modelBuilder.Entity<Order>(entity =>
+        modelBuilder.Entity<DataModel.Order>(entity =>
         {
             entity.HasIndex(e => e.CustomerId, "CustomerID");
 
@@ -497,7 +499,7 @@ public partial class NorthWindContext : DbContext
                 .HasColumnName("CustomerID");
         });
 
-        modelBuilder.Entity<Region>(entity =>
+        modelBuilder.Entity<DataModel.Region>(entity =>
         {
             entity.HasKey(e => e.RegionId).IsClustered(false);
 

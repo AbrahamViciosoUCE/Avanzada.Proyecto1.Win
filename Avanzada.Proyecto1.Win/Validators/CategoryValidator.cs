@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Avanzada.Proyecto1.Win.Validators
 {
-    public class ICategoryValidator: AbstractValidator<Category>
+    public class CategoryValidator: AbstractValidator<Category>
     {
-        public ICategoryValidator() { 
+        public CategoryValidator() { 
             RuleFor(x => x.CategoryName).NotEmpty();
             RuleFor(x => x.Description).NotEmpty();
         }
