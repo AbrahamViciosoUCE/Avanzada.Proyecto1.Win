@@ -182,5 +182,10 @@ namespace Avanzada.Proyecto1.Win.Views.Controls
         {
 
         }
+
+        private void deleteOrderDetail_Click(object sender, EventArgs e)
+        {
+            orderDetailsBindingList.RemoveAt(orderDetailDataGridView.SelectedRows[0].Index);
+        }
     }
 }

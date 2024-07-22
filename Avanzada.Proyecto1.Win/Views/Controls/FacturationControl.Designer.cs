@@ -53,6 +53,7 @@
             kryptonTextBox4 = new Krypton.Toolkit.KryptonTextBox();
             kryptonTextBox5 = new Krypton.Toolkit.KryptonTextBox();
             kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            deleteOrderDetail = new Krypton.Toolkit.KryptonButton();
             unitPriceNumeric = new Krypton.Toolkit.KryptonNumericUpDown();
             discountNumeric = new Krypton.Toolkit.KryptonNumericUpDown();
             quantityNumeric = new Krypton.Toolkit.KryptonNumericUpDown();
@@ -318,6 +319,7 @@
             // kryptonPanel1
             // 
             kryptonPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            kryptonPanel1.Controls.Add(deleteOrderDetail);
             kryptonPanel1.Controls.Add(unitPriceNumeric);
             kryptonPanel1.Controls.Add(discountNumeric);
             kryptonPanel1.Controls.Add(quantityNumeric);
@@ -333,6 +335,17 @@
             kryptonPanel1.PaletteMode = Krypton.Toolkit.PaletteMode.Custom;
             kryptonPanel1.Size = new Size(1189, 373);
             kryptonPanel1.TabIndex = 25;
+            // 
+            // deleteOrderDetail
+            // 
+            deleteOrderDetail.Location = new Point(513, 57);
+            deleteOrderDetail.Name = "deleteOrderDetail";
+            deleteOrderDetail.Palette = kryptonCustomPaletteBase;
+            deleteOrderDetail.PaletteMode = Krypton.Toolkit.PaletteMode.Custom;
+            deleteOrderDetail.Size = new Size(204, 21);
+            deleteOrderDetail.TabIndex = 34;
+            deleteOrderDetail.Values.Text = "Delete Order Detail";
+            deleteOrderDetail.Click += deleteOrderDetail_Click;
             // 
             // unitPriceNumeric
             // 
@@ -408,12 +421,15 @@
             // 
             // orderDetailDataGridView
             // 
+            orderDetailDataGridView.AllowUserToAddRows = false;
+            orderDetailDataGridView.AllowUserToDeleteRows = false;
             orderDetailDataGridView.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             orderDetailDataGridView.BorderStyle = BorderStyle.None;
             orderDetailDataGridView.Location = new Point(29, 101);
             orderDetailDataGridView.Name = "orderDetailDataGridView";
             orderDetailDataGridView.Palette = kryptonCustomPaletteBase;
             orderDetailDataGridView.PaletteMode = Krypton.Toolkit.PaletteMode.Custom;
+            orderDetailDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             orderDetailDataGridView.Size = new Size(1098, 247);
             orderDetailDataGridView.TabIndex = 1;
             // 
@@ -655,5 +671,6 @@
         private Krypton.Toolkit.KryptonLabel totalLabel;
         private Krypton.Toolkit.KryptonLabel subtotalLabel;
         private Krypton.Toolkit.KryptonLabel discountLabel;
+        private Krypton.Toolkit.KryptonButton deleteOrderDetail;
     }
 }
