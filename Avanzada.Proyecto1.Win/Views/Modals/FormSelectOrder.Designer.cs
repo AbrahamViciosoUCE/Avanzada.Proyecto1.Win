@@ -83,6 +83,7 @@
             Controls.Add(acceptButton);
             Controls.Add(OrderdataGridView);
             Name = "FormSelectOrder";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "FormSelectOrder";
             Load += FormSelectOrder_Load;
             ((System.ComponentModel.ISupportInitialize)OrderdataGridView).EndInit();

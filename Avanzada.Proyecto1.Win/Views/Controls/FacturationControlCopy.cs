@@ -69,9 +69,9 @@ namespace Avanzada.Proyecto1.Win.Views.Controls
             OrderbindingSource.DataSource = orderViewModel;
 
             //LOAD COMBOBOX PRODUCTS ADD
-            productComboBox.DataSource = _productDataProvider.GetProductsWithEF();
-            productComboBox.ValueMember = nameof(DataModel.Product.ProductId);
-            productComboBox.DisplayMember = nameof(DataModel.Product.ProductName);
+            productComboBox.DataSource = _productDataProvider.GetProducts();
+            productComboBox.ValueMember = nameof(Models.Product.ProductId);
+            productComboBox.DisplayMember = nameof(Models.Product.ProductName);
 
             //LOAD COMBOBOX CUSTOMER ORDER
             customerComboBox.DataSource = _customerDataProvider.GetCustomers();
@@ -88,7 +88,7 @@ namespace Avanzada.Proyecto1.Win.Views.Controls
         {
             int ProductIdSelected = int.Parse(productComboBox.SelectedValue.ToString());
 
-            Models.Product productSelected = _productDataProvider.GetProductByIdFullyColumns(ProductIdSelected).First();
+            Models.Product productSelected = _productDataProvider.GetProductByID(ProductIdSelected).First();
 
             if (orderDetailsBindingList.Where(x => x.ProductId == ProductIdSelected).Count() == 1)
             {
@@ -155,17 +155,17 @@ namespace Avanzada.Proyecto1.Win.Views.Controls
         {
             if (_formSelectOrder.ShowDialog() == DialogResult.OK)
             {
-                orderViewModel = _formSelectOrder.orderViewModel;
-                OrderbindingSource.DataSource = orderViewModel;
-                OrderbindingSource.ResetBindings(false);
+                //orderViewModel = _formSelectOrder.orderViewModel;
+                //OrderbindingSource.DataSource = orderViewModel;
+                //OrderbindingSource.ResetBindings(false);
 
-                orderDetailsBindingList = new BindingList<Models.OrderDetail>
-                    (
-                        _orderDetailDataProvider.GetOrderDetailsByOrderId(orderViewModel.OrderId).ToList()
-                    );
-                orderDetaildataGridView.DataSource = orderDetailsBindingList;
-                orderDetailsBindingList.ResetBindings();
-                modalMode = ModalMode.Edit;
+                //orderDetailsBindingList = new BindingList<Models.OrderDetail>
+                //    (
+                //        _orderDetailDataProvider.GetOrderDetailsByOrderId(orderViewModel.OrderId).ToList()
+                //    );
+                //orderDetaildataGridView.DataSource = orderDetailsBindingList;
+                //orderDetailsBindingList.ResetBindings();
+                //modalMode = ModalMode.Edit;
             }
             CalculateAmount();
         }
@@ -209,7 +209,7 @@ namespace Avanzada.Proyecto1.Win.Views.Controls
         {
             if (int.TryParse(productComboBox.SelectedValue.ToString(), out int value))
             {
-                PricetextBox.Text = _productDataProvider.GetProductByIdFullyColumns(value).First().UnitPrice.ToString();
+                PricetextBox.Text = _productDataProvider.GetProductByID(value).First().UnitPrice.ToString();
             }
 
         }

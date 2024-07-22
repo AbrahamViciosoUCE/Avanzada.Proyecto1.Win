@@ -21,17 +21,33 @@ namespace Avanzada.Proyecto1.Win.Data.Products
 
         public IEnumerable<Models.Product> GetProducts()
         {
-            IEnumerable<Product> products = new List<Product>();
-            string queryString = @"SELECT A.*, B.CompanyName SupplierName, 
-                                            C.CategoryName FROM Products A 
-            INNER JOIN dbo.Suppliers B ON A.SupplierID = B.SupplierID 
-            INNER JOIN Categories C ON C.CategoryID = A.CategoryID;";
-            using (SqlConnection connection = new SqlConnection(_configuration.GetSection("ConnectionStrings:Database").Value))
-            {
-                products = connection.Query<Product>(queryString);
+            //IEnumerable<Product> products = new List<Product>();
+            //string queryString = @"SELECT A.*, B.CompanyName SupplierName, 
+            //                                C.CategoryName FROM Products A 
+            //INNER JOIN dbo.Suppliers B ON A.SupplierID = B.SupplierID 
+            //INNER JOIN Categories C ON C.CategoryID = A.CategoryID;";
+            //using (SqlConnection connection = new SqlConnection(_configuration.GetSection("ConnectionStrings:Database").Value))
+            //{
+            //    products = connection.Query<Product>(queryString);
 
-                return products;
-            }
+            //    return products;
+            //}
+
+            return _northWindContext.Products.Select(x => new Models.Product()
+            {
+                ProductId = x.ProductId,
+                ProductName = x.ProductName,
+                QuantityPerUnit = x.QuantityPerUnit,
+                CategoryId = x.Category.CategoryId,
+                CategoryName = x.Category.CategoryName,
+                Discontinued = x.Discontinued,
+                ReorderLevel = x.ReorderLevel,
+                SupplierId = x.Supplier.SupplierId,
+                SupplierName = x.Supplier.CompanyName,
+                UnitPrice = x.UnitPrice,
+                UnitsInStock = x.UnitsInStock,
+                UnitsOnOrder = x.UnitsOnOrder,
+            });
         }
 
         public IEnumerable<int> CreateProduct(Product product)
@@ -108,27 +124,14 @@ namespace Avanzada.Proyecto1.Win.Data.Products
             }
         }
 
-        public IEnumerable<Models.Product> GetProductByIdFullyColumns(int id)
+        public IEnumerable<Product> GetProductByIdFullyColumns(int id)
         {
-            return _northWindContext.Products.Where(x => x.ProductId == id).Select(x => new Models.Product() { 
-                ProductId = x.ProductId,
-                ProductName = x.ProductName,
-                SupplierId = x.SupplierId,
-                SupplierName = x.Supplier.CompanyName,
-                CategoryId = x.CategoryId,
-                CategoryName = x.Category.CategoryName,
-                UnitPrice = x.UnitPrice,
-                QuantityPerUnit = x.QuantityPerUnit,
-                UnitsInStock = x.UnitsInStock,
-                UnitsOnOrder = x.UnitsOnOrder,
-                ReorderLevel = x.ReorderLevel,
-                Discontinued = x.Discontinued
-            }).ToList();
+            throw new NotImplementedException();
         }
 
         public IEnumerable<DataModel.Product> GetProductsWithEF()
         {
-            return _northWindContext.Products.ToList();
+            throw new NotImplementedException();
         }
     }
 }

@@ -8,6 +8,6 @@ namespace Avanzada.Proyecto1.Win.Data.OrderDetails
 {
     public interface IOrderDetailDataProvider
     {
-        IEnumerable<Models.OrderDetail> GetOrderDetailsByOrderId(int id);  
+        IEnumerable<DataModel.OrderDetail> GetOrderDetailsByOrderId(int id);  
     }
 }

@@ -13,19 +13,10 @@ namespace Avanzada.Proyecto1.Win.Data.OrderDetails
         public OrderDetailDataProvider(NorthWindContext northWindContext) { 
             _northwindContext = northWindContext;
         }
-        public IEnumerable<Models.OrderDetail> GetOrderDetailsByOrderId(int id)
+        public IEnumerable<DataModel.OrderDetail> GetOrderDetailsByOrderId(int id)
         {
             return _northwindContext.OrderDetails
-                .Where(x => x.OrderId == id)
-                .Select(x => new Models.OrderDetail()
-            {
-                OrderId = x.OrderId,
-                ProductId = x.ProductId,
-                Discount = x.Discount,
-                ProductName = x.Product.ProductName,
-                Quantity = x.Quantity,
-                UnitPrice = x.UnitPrice,
-            });
+                .Where(x => x.OrderId == id);
         }
     }
 }
